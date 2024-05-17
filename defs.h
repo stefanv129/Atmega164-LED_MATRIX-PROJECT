@@ -17,25 +17,8 @@
 #define CR				0x0D
 #define LF				0x0A  
 
-#ifndef GREEN
-#define GREEN 0xFF0000
-#endif
 
-#ifndef RED
-#define RED 0x00FF00
-#endif
 
-#ifndef BLUE 
-#define BLUE 0x0000FF
-#endif
-
-#ifndef YELLOW 
-#define YELLOW 0xFFFF00
-#endif
-
-#ifndef PURPLE 
-#define PURPLE 0x00FFFF 
-#endif
 
 
 #ifndef LED_NR 
