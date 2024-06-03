@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentație Proiect Robot cu Emoții</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #444;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            background: #eaeaea;
+            padding: 2px 4px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        img {
+            border-radius: 5px;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .icon {
+            color: #ff6600;
+            font-size: 24px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .icon:hover {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-robot icon"></i> Cap de robot "cu emoții" folosind LED-uri adresabile individual WS2812</h1>
+        <h2>Membrii echipei: Voinescu Ștefan-Ioan și Negoiță Andrei-Narcis</h2>
+        
+        <h2>Introducere</h2>
+        <p>
+            Proiectul „Cap de robot cu emoții” folosește o matrice de LED-uri WS2812 8x8 pentru a afișa diferite stări emoționale. 
+            Scopul este de a reproduce artistic stări emoționale precum bucurie, supărare, râs, plâns etc., prin utilizarea unor 
+            "smileys" simbolizate pe matrice. Utilizatorul poate selecta emoțiile printr-o interacțiune simplă prin portul serial.
+        </p>
+
+        <h2>Descrierea Hardware-ului</h2>
+        <ul>
+            <li><strong>Matricea de LED-uri WS2812:</strong> O matrice de 8x8 LED-uri adresabile individual.</li>
+            <li><strong>Microcontroller:</strong> Atmel ATmega164A.</li>
+            <li><strong>Conexiuni:</strong> Microcontroller conectat la laptop folosind un convertor "USB la Serial" și la matrice folosind fire de conectare.</li>
+            <li><strong>Alimentare:</strong> Am alimentat matricea folosind VCC-ul plăcii.</li>
+        </ul>
+
+
+        <h2>Implementarea</h2>
+        <p><strong>Definirea unui LED (ex: culoare verde):</strong></p>
+        <pre><code>
+void LED_GRN()
+{      
+    //bit23
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns();
+        
+        //bit22
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns();
+        
+        //bit21
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns(); 
+        
+        //bit20
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns();
+        
+        //bit19
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns();
+        
+        //bit18
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns();
+        
+        //bit17
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns(); 
+        
+        //bit16
+        PORTD |= (1 << PORTD7);
+        delay_700ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_600ns(); 
+        
+        //bit15
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns(); 
+        
+        //bit14
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns(); 
+        
+        //bit13
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns(); 
+        
+        //bit12
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit11
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit10
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns(); 
+        
+        //bit9
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit8
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit7
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns(); 
+        
+        //bit6
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit5
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit4
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit3
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit2
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit1
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_800ns();
+        
+        //bit0
+        PORTD |= (1 << PORTD7);
+        delay_350ns();
+        PORTD &= ~(1 << PORTD7); 
+        delay_short_800ns();
+
+	//PORTD7 este un macro cu valoarea 7
+}
+        </code></pre>
+	
+	<p>
+            	Fiecare LED este adresabil individual prin 24 de biți. Matricea este GRB (Green Red Blue), deci din cei 24 de biți, 8 sunt pentru coloarea verde, 8 pentru roșu si 8 pentru albastru. 
+		
+		Acesi biti sunt trimisi prin pinul 21 adica portul D pinul 7. In functia "Init_initController()" ne-am asigurat ca pinul 7 este selectat ca si output.
+		
+		Matricea WS2812 intelege valorile bitilor atfel: un bit de 0 inseamna un semnal care are valoarea 1 logic pentru 350 de ns iar apoi 0 logic pentru 800 ns, si un bit de 1 inseamna un semnal cu valoarea 1 logic pentru 700    		
+		ns si 0 logic pentru 600 ns. De asemenea orice semnal de 0 logic mai lung de 50 us este considerat "reset".
+		
+		Functiile de delay au fost concepute de la zero; libraria delay.h nu ofera functii pentru delay-uri in nanosecunde. 
+		
+		Pentru a realiza aceste delay-uri am folosit comanda din Assembly "nop" a carei executie dureaza un ciclu de ceas, adica la frecventa oscilatorului de 20MHz, 50 de ns. 
+		
+		Trebuie insa luat in calcul si delay-ul produs de apelarea functiilor; din cauza acestuia la sfarsitul functiilor "LED_" ultima functie de delay apelata (ex.:"delay_short_800ns()") trebuie sa creeze o intarziere mai 		scurta pentru ca la apelarea succesiva de functii "LED_" se creeaza o intarziere prea lunga intre ele.
+        </p>
+
+        <p><strong>Funcția de afișare a unei emoții (ex: față fericită):</strong></p>
+        <pre><code>
+void HAPPY()
+{
+    //row1
+        LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> <span style="background-color: yellow;">LED_GRN();</span> LED_WHT(); LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> <span style="background-color: yellow;">LED_GRN();</span> LED_WHT();
+        //row2
+        LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); 
+        //row3
+        LED_WHT(); LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> LED_WHT(); LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> LED_WHT(); LED_WHT(); 
+        //row4 
+        LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT();   
+        //row5
+        LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT();   
+        //row6 
+        LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> LED_WHT();
+        //row7 
+        LED_WHT(); LED_WHT(); <span style="background-color: yellow;">LED_GRN();</span> <span style="background-color: yellow;">LED_GRN();</span> <span style="background-color: yellow;">LED_GRN();</span> <span style="background-color: yellow;">LED_GRN();</span> LED_WHT(); LED_WHT();   
+        //row8 
+        LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT(); LED_WHT();
+}
+        </code></pre>
+
+	<p>
+            Am creat funcția în felul acesta, deoarece este intuitiv si ușor de imaginat cum ar arăta fața pe matrice, fiind simplu de modificat culoarea fiecărui LED în funcție de poziția sa. 
+		Din cauza necesitatii de delay-uri stricte de ordinul nanosecundelor si a frecventei mici a osciltorului, nu a fost posibil sa folosim loop-uri (for/while), ele avand un timp de executie prea lung.
+        </p>
+
+        <p><strong>Interacțiunea cu utilizatorul prin portul serial:</strong></p>
+        <pre><code>
+void main (void)
+{          
+    unsigned char temp,i;
+uint8_t state;
+
+	Init_initController();  // this must be the first "init" action/call!
+	#asm("sei")             // enable interrupts
+	LED1 = 1;           	// initial state, will be changed by timer 1
+
+	while(TRUE)
+	{
+		wdogtrig();	        // call often else processor will reset
+		if(rx_counter0)     // if a character is available on serial port USART0
+		{
+			temp = getchar();
+			
+            delay_ms(100);
+            
+            putchar(temp);		   
+		} 
+        
+        
+        
+        
+        if(temp == 'n' || temp == 'N' )
+        {
+          NEUTRAL();
+          delay_ms(200);
+        }
+    
+        else if(temp == 'h' || temp == 'H')
+        {
+          
+          HAPPY();
+          delay_ms(200);   
+        }
+        else if(temp == 'l' || temp == 'L')
+        {
+          
+          LAUGH();
+          delay_ms(200);  
+        }
+         else if(temp == 's' || temp == 'S')
+        {
+          
+          SAD();
+          delay_ms(200);  
+        }
+         else if(temp == 'c' || temp == 'C')
+        {
+          
+          CRY();
+          delay_ms(200);  
+        }
+         else if(temp == 'a' || temp == 'A')
+        {
+          
+          ANGRY();
+          delay_ms(200);  
+        }
+        else
+        {
+          NO_FACE();
+          delay_ms(200);
+        }
+
+}
+        </code></pre>
+
+	 <p>
+            Pentru fiecare emoție în parte am asociat o tastă reprezentativă, "h" (de la "happy") pentru fericit, "s" (de la "sad") pentru trist etc.
+        </p>
+
+        <h2>Interacțiunea cu Utilizatorul</h2>
+        <p>
+            Utilizatorul poate interacționa cu robotul trimițând comenzi simple prin portul serial. De exemplu:
+        </p>
+        <ul>
+            <li><code1>"h" sau "H"</code1> pentru față fericită</li>
+            <li><code1>"s" sau "S"</code1> pentru față tristă</li>
+	    <li><code1>"l" sau "L"</code1> pentru față mai fericită (o față care râde)</li>
+	    <li><code1>"c" sau "C"</code1> pentru față mai tristă (o față care plânge)</li>
+	    <li><code1>"a" sau "A"</code1> pentru față mânioasă</li>
+	    <li><code1>"n" sau "N"</code1> pentru față neutră</li>
+            <li>Alte comenzi afișează pe matrice o stare "idle"</li>
+        </ul>
+
+	<h2>Poze ilustrative</h2>
+
+	<p>Conexiuni (matricea fiind în starea "idle"): </p>
+	<img src="https://i.imgur.com/mxKcMw6.jpg" title="Conexiuni (matricea fiind în starea 'idle')" alt="Stare 'idle'" width="300" />
+
+	<p>Față fericită: </p>
+	<img src="https://i.imgur.com/h5liw4p.jpg" title="Fata zambareata" alt="Stare 'idle'" width="300" />
+
+	<p>Față tristă: </p>
+	<img src="https://i.imgur.com/giN9tGA.jpg" title="Fata trists" alt="Stare 'idle'" width="300" />
+
+	<h2>Concluzii</h2>
+        <p>
+            Acest proiect demonstrează cum se poate crea un cap de robot expresiv folosind LED-uri WS2812 și un microcontroller. 
+            Prin utilizarea unei interacțiuni simple prin portul serial, utilizatorul poate schimba expresiile faciale ale robotului, 
+            oferind o experiență interactivă și educativă.
+        </p>
+
+    </div>
+</body>
+</html>
